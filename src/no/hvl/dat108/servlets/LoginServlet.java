@@ -2,6 +2,7 @@ package no.hvl.dat108.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import static no.hvl.dat108.hjelpeklasser.UrlMappings.LOGIN_URL;
@@ -37,8 +38,10 @@ public class LoginServlet extends HttpServlet {
 		List<Deltager> liste = deltagerEAO.hentAlleDeltagere();
 		response.setContentType("text/plain");
 		PrintWriter out = response.getWriter();
-		
 		liste.forEach(out::println);
+		
+		request.getRequestDispatcher("/WEB-INF/jsp/html-templates/logginn_MAL.jsp")
+		.forward(request, response);
 		
 		
 		

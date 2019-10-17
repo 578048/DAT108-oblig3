@@ -19,24 +19,16 @@
 			<th align="left">Navn</th>
 			<th align="left">Mobil</th>
 		</tr>
-		<tr bgcolor="#aaffaa">
-			<td align="center">&#9792;</td>
-			<td>Anne Annesen</td>
-			<td>445 54 455</td>
-		</tr>
-		<tr bgcolor="#ffffff">
-			<td align="center">&#9794;</td>
-			<td>Arne Arnesen</td>
-			<td>901 23 456</td>
-		</tr>
-		<tr bgcolor="#ffffff">
-			<td align="center">&#9794;</td>
-			<td>Per Viskeler</td>
-			<td>112 23 344</td>
-		</tr>
+		<c:forEach items="${deltagere}" var="d">
+			<tr bgcolor="#aaffaa">
+				<td align="center">&#9792;</td>
+				<td>${d.fornavn} ${d.etternavn}</td>
+				<td>${d.mobilnummer }</td>
+			</tr>
+		</c:forEach>
 	</table>
 	<p>
-		<a href="loggut">Ferdig</a>
+		<a href="logout">Ferdig</a>
 	</p>
 </body>
 </html>
