@@ -58,6 +58,13 @@ public class Deltager {
 	public void setKjoenn(String kjoenn) {
 		this.kjoenn = kjoenn;
 	}
+
+	@Override
+	public String toString() {
+		return "Deltager [mobilnummer=" + mobilnummer + ", fornavn=" + fornavn + ", etternavn=" + etternavn
+				+ ", passord=" + passord + ", kjoenn=" + kjoenn + "]";
+	}
+	
 	
 	
 

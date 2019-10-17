@@ -6,11 +6,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import static no.hvl.dat108.hjelpeklasser.UrlMappings.DELTAGERLISTE_URL;
 /**
  * Servlet implementation class DeltagerListeServlet
  */
-@WebServlet("/DeltagerListeServlet")
+@WebServlet("/" + DELTAGERLISTE_URL)
 public class DeltagerListeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

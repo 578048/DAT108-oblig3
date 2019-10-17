@@ -1,6 +1,7 @@
 package no.hvl.dat108.servlets;
 
 import java.io.IOException;
+import static no.hvl.dat108.hjelpeklasser.UrlMappings.LOGOUT_URL;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class LogOutServlet
  */
-@WebServlet("/LogOutServlet")
+@WebServlet("/" + LOGOUT_URL)
 public class LogOutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

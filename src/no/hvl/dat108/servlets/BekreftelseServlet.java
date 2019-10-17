@@ -7,10 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import static no.hvl.dat108.hjelpeklasser.UrlMappings.BEKREFTELSE_URL;
+
 /**
  * Servlet implementation class BekreftelseServlet
  */
-@WebServlet("/BekreftelseServlet")
+@WebServlet("/" + BEKREFTELSE_URL)
 public class BekreftelseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
