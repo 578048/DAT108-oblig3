@@ -2,14 +2,12 @@ package no.hvl.dat108.servlets;
 
 import java.io.IOException;
 import java.util.List;
-
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import no.hvl.dat108.EAO.DeltagerEAO;
 import no.hvl.dat108.entiteter.Deltager;
 
@@ -20,7 +18,7 @@ import static no.hvl.dat108.hjelpeklasser.UrlMappings.DELTAGERLISTE_URL;
 @WebServlet("/" + DELTAGERLISTE_URL)
 public class DeltagerListeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
 	@EJB
 	private DeltagerEAO deltagerEAO;
 	

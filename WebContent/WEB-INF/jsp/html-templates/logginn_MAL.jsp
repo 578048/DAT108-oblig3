@@ -7,11 +7,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <!-- Fra https://purecss.io/ -->
-<link rel="stylesheet"
-	href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
 <title>Logg inn</title>
 </head>
 <body>
+	<div class="container">
 	<h2>Logg inn</h2>
 	<p>Det er kun registrerte deltagere som får se deltagerlisten.</p>
 	<p>
@@ -32,6 +33,6 @@
 			</div>
 		</fieldset>
 	</form>
-
+	</div>
 </body>
 </html>
