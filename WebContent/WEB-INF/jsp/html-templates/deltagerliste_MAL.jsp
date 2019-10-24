@@ -20,11 +20,25 @@
 			<th align="left">Mobil</th>
 		</tr>
 		<c:forEach items="${deltagere}" var="d">
-			<tr bgcolor="#aaffaa">
-				<td align="center">&#9792;</td>
-				<td>${d.fornavn} ${d.etternavn}</td>
-				<td>${d.mobilnummer }</td>
-			</tr>
+			<c:choose>
+				<c:when test="${d.mobilnummer eq mobil}">  
+					<tr bgcolor="#00ff00">
+						<td align="center">${d.kjoenn}</td>
+						<td>${d.fornavn} ${d.etternavn}</td>
+						<td>${d.mobilnummer }</td>
+					</tr>
+				</c:when>
+				<c:otherwise> 
+				
+					<tr bgcolor="#FFFFFF">
+						<td align="center">${d.kjoenn}</td>
+						<td>${d.fornavn} ${d.etternavn}</td>
+						<td>${d.mobilnummer }</td>
+					</tr>
+					
+				</c:otherwise> 
+			
+			</c:choose>
 		</c:forEach>
 	</table>
 	<p>

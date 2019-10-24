@@ -14,11 +14,11 @@
 <body>
 	<h2>Påmeldingsbekreftelse</h2>
 	<p>Påmeldingen er mottatt for</p>
-	<p>
-		&nbsp;&nbsp;&nbsp;Anne<br />
-		&nbsp;&nbsp;&nbsp;Annesen<br />
-		&nbsp;&nbsp;&nbsp;44554455<br /> &nbsp;&nbsp;&nbsp;kvinne
-	</p>
+		<p>${mobil}</p> 
+		<p>${fornavn}</p>
+		<p>${etternavn}</p>
+		<p>${kjoenn}</p>
+	
 	<a href="deltagerliste">Gå til deltagerlisten</a>
 </body>
 </html>

@@ -17,6 +17,15 @@ public class Deltager {
 	private String passord;
 	private String kjoenn;
 	
+	public Deltager(String mobilnummer, String fornavn, String etternavn, String passord, String kjoenn) {
+		
+		this.mobilnummer = mobilnummer;
+		this.fornavn = fornavn;
+		this.etternavn = etternavn;
+		this.passord = passord;
+		this.kjoenn = kjoenn;
+	}
+
 	public Deltager() {}
 
 	public String getMobilnummer() {

@@ -9,11 +9,21 @@ import no.hvl.dat108.entiteter.Deltager;
 
 public class Validator {
 	
+	private Deltager d;
 	
+	public Validator(Deltager d) {
+		this.d = d;
+	}
+	
+	public boolean alleGodkjent() {
+		return validateFirstName(d.getFornavn()) && validatePhoneNumber(d.getMobilnummer()) && validateLastName(d.getEtternavn())
+				&& validatePassword(d.getPassord()) && gyldigKjoenn(d.getKjoenn());
+	}
 	//bindestrek og mellomrom
-	public static boolean validateFirstName(String name) {
+	private boolean validateFirstName(String name) {
 		
 		if (name.length() < 2 || name.length() > 20) {
+			System.out.println("fornavn");
 			return false;
 		}
 
@@ -28,9 +38,10 @@ public class Validator {
 	}
 	
 	//bindestrek
-	public static  boolean validateLastName(String name) {
+	private  boolean validateLastName(String name) {
 		
 		if (name.length() < 2 || name.length() > 20) {
+			System.out.println("etternavn");
 			return false;
 		}
 
@@ -41,19 +52,23 @@ public class Validator {
 		
 	}
 	
-	public static boolean gyldigKjoenn(String kjoenn) {
+	private boolean gyldigKjoenn(String kjoenn) {
 		char gender = kjoenn.charAt(0);
 		
 		return (gender == 'K' || gender=='M');
 	}
 	
-	public static boolean validatePhoneNumber(String phonenumber) {
+	private boolean validatePhoneNumber(String phonenumber) {
 		
 		return phonenumber != null && phonenumber.matches("^\\d{8}$");
 		
 	}
 	
-	public static boolean validatePassword(String password) {
+	// minst 8 tegn mindre enn 20 tegn
+	// minst 1 uppercase
+	//
+	
+	private boolean validatePassword(String password) {
 		
 		boolean upperCases = false;
 		
@@ -64,14 +79,19 @@ public class Validator {
 			}
 		}
 		
+		if(!upperCases) {
+			System.out.println("ikke store bokstaver i passord");
+		}
+		
 		return (password.length() > 8 && password.length() < 20 && upperCases);
 		
 	}
 	
-	private static boolean firstLetterCapital(String name) {
+	private boolean firstLetterCapital(String name) {
 
 		char firstLetter = name.charAt(0);
 		if (!Character.isUpperCase(firstLetter)) {
+			System.out.println("første bokstav ikke STOR");
 			return false;
 		}
 		return true;
