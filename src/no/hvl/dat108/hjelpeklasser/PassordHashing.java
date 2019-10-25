@@ -40,6 +40,7 @@ public class PassordHashing {
 	 * @param password
 	 * @throws NoSuchAlgorithmException
 	 */
+	
 	public String generateHashWithoutSalt(final String password) throws NoSuchAlgorithmException {
 		
 		MessageDigest md = MessageDigest.getInstance(hashAlgorithm);
@@ -87,6 +88,7 @@ public class PassordHashing {
 	 * @throws NoSuchAlgorithmException 
 	 * @throws InvalidKeySpecException 
 	 */
+	
 	public void generateHashWithSaltAndIteration(final String password, byte[] salt, int keylength, int iteration) throws NoSuchAlgorithmException, InvalidKeySpecException {
 		
 		char[] passchar = password.toCharArray();
@@ -171,6 +173,8 @@ public class PassordHashing {
 
 			e.printStackTrace();
 		}
+		
+		this.passwordSalt = salt;
 
 	    return salt;
 	}
