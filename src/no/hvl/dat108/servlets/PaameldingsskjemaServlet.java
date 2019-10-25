@@ -2,6 +2,7 @@ package no.hvl.dat108.servlets;
 
 import java.io.IOException;
 
+import java.security.NoSuchAlgorithmException;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -17,6 +18,7 @@ import no.hvl.dat108.EAO.DeltagerEAO;
 import no.hvl.dat108.entiteter.Deltager;
 import no.hvl.dat108.hjelpeklasser.FeilMeldingUtil;
 import no.hvl.dat108.hjelpeklasser.InnloggingUtil;
+import no.hvl.dat108.hjelpeklasser.PassordHashing;
 import no.hvl.dat108.hjelpeklasser.Validator;
 import static no.hvl.dat108.hjelpeklasser.UrlMappings.DELTAGERLISTE_URL;
 import static no.hvl.dat108.hjelpeklasser.UrlMappings.PAAMELDING_URL;
@@ -71,10 +73,28 @@ public class PaameldingsskjemaServlet extends HttpServlet {
 		String kjoenn = request.getParameter("kjonn");
 		
 		
-		Deltager d = new Deltager(mobilnummer,fornavn,etternavn,passord,kjoenn);
+		Deltager d = new Deltager(mobilnummer,fornavn,etternavn,passord,kjoenn, "");
 		Validator v = new Validator(d);
 
 		if(v.alleGodkjent()) {
+			
+			PassordHashing pH = new PassordHashing(PassordHashing.SHA256);
+			
+			byte[] salt = pH.getSalt();
+			try {
+				pH.generateHashWithSalt(passord, salt);
+			} catch(NoSuchAlgorithmException e) {
+				e.printStackTrace();
+			}
+			
+			String hashedPassord = pH.getPasswordHashinHex();
+			String passordSalt = pH.getPasswordSalt();
+			
+			d.setPassord(hashedPassord);
+			d.setSalt(passordSalt);
+			
+			System.out.println(d.getSalt());
+			
 			
 			boolean lagtTil = deltagerEAO.leggTilDeltager(d);
 			
@@ -87,7 +107,7 @@ public class PaameldingsskjemaServlet extends HttpServlet {
 				response.sendRedirect(BEKREFTELSE_URL);
 				
 			} else {
-				//ikke lagt til
+				//ikke lagt til / mobilnummer finnes fra før
 				
 				response.sendRedirect(PAAMELDING_URL + "?feilkode=4");
 				
