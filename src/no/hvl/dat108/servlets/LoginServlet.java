@@ -71,30 +71,43 @@ public class LoginServlet extends HttpServlet {
 		
 		String mobilnummer = request.getParameter("mobil");
 		Deltager d = deltagerEAO.hentDeltagerMedBrukernavn(mobilnummer);
-		//FeilMeldingUtil fmu;
+
 		String feilkode = "";
-		//PassordHashing hasher = new PassordHashing("SHA-256");
+		
 		
 		
 		if (d == null) { //mobilnummer/bruker eksisterer ikke
 			feilkode = "1";
-			//fmu = new FeilMeldingUtil(feilkode);
+			
 			response.sendRedirect(LOGIN_URL + "?feilkode=" + feilkode);
 		} else {
 			
-			System.out.println(d.toString());
+			PassordHashing pH = new PassordHashing(PassordHashing.SHA256);
 			
+			
+			//hentes fra databasen for validering
 			String dbPassord = d.getPassord();
-			//byte[] salt = hasher.getSalt();
+			String dbSalt = d.getSalt();
 			
 			
+			//henter fra htmlform
 			String plaintext = request.getParameter("passord");
 			
-			boolean likePassord = plaintext.equals(dbPassord); //uten hash
+			//generer ny salt / men ikke brukt videre
+			pH.getSalt();
 			
-			//String hashedPassord = hasher.getPasswordHashinHex();
 			
-			if (!likePassord) {
+			boolean validert = false;
+			
+			try {
+				//tar seg av hashingen av plaintext-passordet
+				 validert = pH.validatePasswordWithSalt(plaintext, dbSalt/*pH.getPasswordSalt()*/, dbPassord);
+			
+			} catch(NoSuchAlgorithmException e) {
+				e.printStackTrace();
+			}
+			
+			if (!validert) { 
 				feilkode = "2";
 				response.sendRedirect(LOGIN_URL + "?feilkode=" + feilkode );			
 				
