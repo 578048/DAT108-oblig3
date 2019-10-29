@@ -23,6 +23,8 @@ public class LogOutServlet extends HttpServlet {
 		
 		InnloggingUtil.loggUt(request);
 		
+		System.out.println(InnloggingUtil.erInnlogget(request));
+		
 		request.getRequestDispatcher("/WEB-INF/jsp/html-templates/ferdig_MAL.jsp")
 		.forward(request, response);
 	}
@@ -32,5 +34,5 @@ public class LogOutServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
+	
 }

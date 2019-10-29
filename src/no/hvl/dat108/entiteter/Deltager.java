@@ -13,17 +13,18 @@ public class Deltager {
 	
 	private String fornavn;
 	private String etternavn;
-	
 	private String passord;
+	private String salt;
 	private String kjoenn;
 	
-	public Deltager(String mobilnummer, String fornavn, String etternavn, String passord, String kjoenn) {
+	public Deltager(String mobilnummer, String fornavn, String etternavn, String passord, String kjoenn, String salt) {
 		
 		this.mobilnummer = mobilnummer;
 		this.fornavn = fornavn;
 		this.etternavn = etternavn;
 		this.passord = passord;
 		this.kjoenn = kjoenn;
+		this.salt = salt;
 	}
 
 	public Deltager() {}
@@ -68,10 +69,18 @@ public class Deltager {
 		this.kjoenn = kjoenn;
 	}
 
+	public String getSalt() {
+		return salt;
+	}
+	
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+	
 	@Override
 	public String toString() {
 		return "Deltager [mobilnummer=" + mobilnummer + ", fornavn=" + fornavn + ", etternavn=" + etternavn
-				+ ", passord=" + passord + ", kjoenn=" + kjoenn + "]";
+				+ ", passord=" + passord + ", salt=" + salt + ", kjoenn=" + kjoenn + "]";
 	}
 	
 	

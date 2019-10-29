@@ -20,10 +20,9 @@ public class Validator {
 				&& validatePassword(d.getPassord()) && gyldigKjoenn(d.getKjoenn());
 	}
 	//bindestrek og mellomrom
-	private boolean validateFirstName(String name) {
+	public boolean validateFirstName(String name) {
 		
 		if (name.length() < 2 || name.length() > 20) {
-			System.out.println("fornavn");
 			return false;
 		}
 
@@ -38,7 +37,7 @@ public class Validator {
 	}
 	
 	//bindestrek
-	private  boolean validateLastName(String name) {
+	public boolean validateLastName(String name) {
 		
 		if (name.length() < 2 || name.length() > 20) {
 			System.out.println("etternavn");
@@ -52,13 +51,13 @@ public class Validator {
 		
 	}
 	
-	private boolean gyldigKjoenn(String kjoenn) {
+	public boolean gyldigKjoenn(String kjoenn) {
 		char gender = kjoenn.charAt(0);
 		
 		return (gender == 'K' || gender=='M');
 	}
 	
-	private boolean validatePhoneNumber(String phonenumber) {
+	public boolean validatePhoneNumber(String phonenumber) {
 		
 		return phonenumber != null && phonenumber.matches("^\\d{8}$");
 		
@@ -68,7 +67,7 @@ public class Validator {
 	// minst 1 uppercase
 	//
 	
-	private boolean validatePassword(String password) {
+	public boolean validatePassword(String password) {
 		
 		boolean upperCases = false;
 		
@@ -79,19 +78,15 @@ public class Validator {
 			}
 		}
 		
-		if(!upperCases) {
-			System.out.println("ikke store bokstaver i passord");
-		}
 		
 		return (password.length() > 8 && password.length() < 20 && upperCases);
 		
 	}
 	
-	private boolean firstLetterCapital(String name) {
+	public boolean firstLetterCapital(String name) {
 
 		char firstLetter = name.charAt(0);
 		if (!Character.isUpperCase(firstLetter)) {
-			System.out.println("første bokstav ikke STOR");
 			return false;
 		}
 		return true;

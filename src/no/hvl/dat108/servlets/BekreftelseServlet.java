@@ -31,10 +31,17 @@ public class BekreftelseServlet extends HttpServlet {
 		String etternavn = d.getEtternavn();
 		String kjoenn = d.getKjoenn();
 		
+		String formatert = "";
+		if (kjoenn.equals("K")) {
+			formatert = "Kvinne";
+		} else {
+			formatert = "Mann";
+		}
+		
 		request.setAttribute("mobil", mobilnummer);
 		request.setAttribute("fornavn", fornavn);
 		request.setAttribute("etternavn", etternavn);
-		request.setAttribute("kjoenn", kjoenn);
+		request.setAttribute("kjoenn", formatert);
 		
 		
 		
