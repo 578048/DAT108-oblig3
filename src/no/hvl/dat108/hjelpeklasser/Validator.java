@@ -92,6 +92,9 @@ public class Validator {
 		return true;
 	}
 	
-	
+	public boolean erLikePassord(String repetertPassord) {
+		
+		return d.getPassord().equals(repetertPassord);
+	}
 
 }

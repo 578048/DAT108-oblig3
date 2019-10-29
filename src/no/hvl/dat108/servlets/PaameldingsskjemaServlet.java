@@ -38,6 +38,7 @@ public class PaameldingsskjemaServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
@@ -71,12 +72,13 @@ public class PaameldingsskjemaServlet extends HttpServlet {
 		String fornavn = request.getParameter("fornavn");
 		String etternavn = request.getParameter("etternavn");
 		String kjoenn = request.getParameter("kjonn");
-		
+		String passordRepetert = request.getParameter("passordRepetert");
+	
 		
 		Deltager d = new Deltager(mobilnummer,fornavn,etternavn,passord,kjoenn, "");
 		Validator v = new Validator(d);
 
-		if(v.alleGodkjent()) {
+		if(v.alleGodkjent() && v.erLikePassord(passordRepetert)) {
 			
 			PassordHashing pH = new PassordHashing(PassordHashing.SHA256);
 			
