@@ -34,5 +34,6 @@
 		</fieldset>
 	</form>
 	</div>
+	<p>Meld deg på ved å gå <a href="paamelding">hit.</a></p>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <!DOCTYPE html>
 <html>
@@ -25,15 +26,20 @@
 					<tr bgcolor="#00ff00">
 						<td align="center">${d.kjoenn}</td>
 						<td>${d.fornavn} ${d.etternavn}</td>
-						<td>${d.mobilnummer }</td>
+						<td>
+							<c:set value="${d.mobilnummer}" var="m"/>
+							<c:out value="${fn:substring(m,0,3)} ${fn:substring(m,3,5)} ${fn:substring(m,5,8)}"/> 
+						</td>
 					</tr>
 				</c:when>
 				<c:otherwise> 
-				
 					<tr bgcolor="#FFFFFF">
 						<td align="center">${d.kjoenn}</td>
 						<td>${d.fornavn} ${d.etternavn}</td>
-						<td>${d.mobilnummer }</td>
+						<td>
+							<c:set value="${d.mobilnummer}" var="m"/>
+							<c:out value="${fn:substring(m,0,3)} ${fn:substring(m,3,5)} ${fn:substring(m,5,8)}"/> 
+						</td>
 					</tr>
 					
 				</c:otherwise> 
