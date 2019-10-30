@@ -18,6 +18,7 @@ import no.hvl.dat108.EAO.DeltagerEAO;
 import no.hvl.dat108.entiteter.Deltager;
 import no.hvl.dat108.hjelpeklasser.FeilMeldingUtil;
 import no.hvl.dat108.hjelpeklasser.InnloggingUtil;
+import no.hvl.dat108.hjelpeklasser.NameConverter;
 import no.hvl.dat108.hjelpeklasser.PassordHashing;
 import no.hvl.dat108.hjelpeklasser.Validator;
 import static no.hvl.dat108.hjelpeklasser.UrlMappings.DELTAGERLISTE_URL;
@@ -73,9 +74,11 @@ public class PaameldingsskjemaServlet extends HttpServlet {
 		String etternavn = request.getParameter("etternavn");
 		String kjoenn = request.getParameter("kjonn");
 		String passordRepetert = request.getParameter("passordRepetert");
-	
 		
-		Deltager d = new Deltager(mobilnummer,fornavn,etternavn,passord,kjoenn, "");
+		String formatertFornavn = NameConverter.convertFirstLetter(fornavn);
+		String formatertEtternavn = NameConverter.convertFirstLetter(etternavn);
+		
+		Deltager d = new Deltager(mobilnummer,formatertFornavn,formatertEtternavn,passord,kjoenn, "");
 		Validator v = new Validator(d);
 
 		if(v.alleGodkjent() && v.erLikePassord(passordRepetert)) {

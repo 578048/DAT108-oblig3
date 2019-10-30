@@ -1,6 +1,7 @@
 package no.hvl.dat108.EAO;
 
 import org.eclipse.persistence.exceptions.DatabaseException;
+
 import org.postgresql.util.PSQLException;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class DeltagerEAO {
 	
 	@PersistenceContext(name="deltagerPU")
 	private EntityManager em;
+	
 	
 	
 	public List<Deltager> hentAlleDeltagere() {

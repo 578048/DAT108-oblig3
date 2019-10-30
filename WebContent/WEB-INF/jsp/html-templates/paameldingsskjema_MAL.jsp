@@ -45,7 +45,7 @@
 					<font color="red"></font>
 			</div>
 			<div class="pure-control-group">
-				<label for="kjonn">Kjønn:</label> <input type="radio" name="kjonn"
+				<label for="kjonn">Kjønn:</label> <input type="radio" name="kjonn" checked="checked"
 					value="M"
 					 />mann
 				<input type="radio" name="kjonn" value="K"
