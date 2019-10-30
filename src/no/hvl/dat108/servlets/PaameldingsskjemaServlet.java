@@ -119,8 +119,27 @@ public class PaameldingsskjemaServlet extends HttpServlet {
 			}
 			
 			
-		} else { //ikke godkjente felt
-			response.sendRedirect(PAAMELDING_URL + "?feilkode=5");
+		} else { 
+			
+			if(!v.validateFirstName(d.getFornavn())) {
+				//Ugyldig fornavn
+				response.sendRedirect(PAAMELDING_URL + "?feilkode=5");
+			} else if(!v.validateLastName(d.getEtternavn())) {
+				//Ugyldig etternavn
+				response.sendRedirect(PAAMELDING_URL + "?feilkode=6");
+			} else if(!v.validatePhoneNumber(d.getMobilnummer())) {
+				//Ugyldig tlf eller at det allerede finnes
+				response.sendRedirect(PAAMELDING_URL + "?feilkode=7");
+			}else if((deltagerEAO.hentDeltagerMedBrukernavn(mobilnummer)!=null)) {
+				response.sendRedirect(PAAMELDING_URL + "?feilkode=10");
+			}else if(!v.validatePassword(d.getPassord())) {
+					//Ugyldig passord
+				response.sendRedirect(PAAMELDING_URL + "?feilkode=8");
+			} else {
+				response.sendRedirect(PAAMELDING_URL + "?feilkode=9");
+			}
+			
+			
 		}
 		
 		

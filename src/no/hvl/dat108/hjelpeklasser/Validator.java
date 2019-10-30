@@ -44,7 +44,7 @@ public class Validator {
 			return false;
 		}
 
-		Pattern p = Pattern.compile("^[ÆØÅæøåA-Za-z-]+$");
+		Pattern p = Pattern.compile("^[ÆØÅæøåA-Za-z]+$");
 		Matcher m = p.matcher(name);
 		
 		return m.find() && firstLetterCapital(name);
