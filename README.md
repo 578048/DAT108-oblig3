@@ -2,8 +2,8 @@
 obligatorisk innlevering 03.11.19
 
 ## Gruppen:
-> Aksel Hestnes
-> Thomas Fyllingen
-> Kristoffer Davidsen
-> Teodor Alveberg
-> Christian Føleide
+- Aksel Hestnes
+- Thomas Fyllingen
+- Kristoffer Davidsen
+- Teodor Alveberg
+- Christian Føleide
