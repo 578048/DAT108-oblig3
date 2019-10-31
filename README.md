@@ -6,4 +6,5 @@ obligatorisk innlevering 03.11.19
 - Thomas Fyllingen
 - Kristoffer Davidsen
 - Teodor Alveberg
+- Sølve Haugen
 - Christian Føleide
